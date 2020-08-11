@@ -20,6 +20,7 @@ import params from './src/params';
 import Field from './src/components/Field';
 
 
+
 const App: () => React$Node = () => {
 	return (	    
 		<View style={styles.container}>
@@ -27,7 +28,8 @@ const App: () => React$Node = () => {
 			<Text style={styles.sectionTitle}>
 				Tamanho da grade:
 				{params.getRowsAmount()}x{params.getColumnsAmount()}
-			</Text>
+      </Text>
+      
 			<Field />
 			<Field opened />
 			<Field opened nearMines={1} />
@@ -38,7 +40,7 @@ const App: () => React$Node = () => {
 			<Field mined opened />
 			<Field mined opened exploded />
 			<Field flagged />
-			<Field flagged opened/>
+      <Field flagged opened/>
 		</View>
   	);
 };
