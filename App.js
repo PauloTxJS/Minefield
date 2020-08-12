@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
@@ -19,6 +18,7 @@ import {
 
 import params from './src/params';
 import MineField from './src/components/MineField';
+import Header from './src/components/Header';
 import { 
   createMinedBoard, 
   cloneBoard, 
@@ -26,7 +26,8 @@ import {
   hadExplosion, 
   wonGame, 
   showMines,
-  invertFlag 
+  invertFlag,
+  flagsUsed 
 } from './src/functions';
 
 export default class App extends Component {
@@ -85,11 +86,8 @@ export default class App extends Component {
   render() {
     return (	    
       <View style={styles.container}>
-        <Text style={styles.sectionTitle}>Iniciando o Mines!</Text>
-        <Text style={styles.sectionTitle}>
-          Tamanho da grade:
-          {params.getRowsAmount()}x{params.getColumnsAmount()}
-        </Text>
+        <Header flagsLeft={this.minesAmount() - flagsUsed(this.state.board)}
+          onNewGame={() => this.setState(this.createState())} />
         <View style={styles.board}>
           <MineField board={this.state.board} 
             onOpenField={this.onOpenField} 
